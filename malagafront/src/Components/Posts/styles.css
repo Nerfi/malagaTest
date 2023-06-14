@@ -1,0 +1,62 @@
+.postsWrapper {
+  height: 100%;
+}
+
+.postsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 40%;
+  border-radius: 5px;
+}
+.card img {
+  width: 100%;
+  height: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px 5px 0 0;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+.postBtns {
+  display: flex;
+  min-width: 50%;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-around;
+  padding-bottom: 4px;
+  /* margin: 5px; */
+}
+.postBtns button {
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #000000;
+  padding: 10px 20px;
+}
+
+.postDeleteBtn {
+  background: #dde6ed;
+  border: 1px solid #cd1818;
+  border-radius: 5px;
+}
+
+.postsUpdateBtn {
+  background: #9ac5f4;
+  border: 1px solid #9ac5f4;
+  border-radius: 5px;
+}

@@ -1,0 +1,48 @@
+.formWrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formContainer {
+  border: solid #000 5px;
+  max-height: 550px;
+  width: 100%;
+  max-width: 750px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* INPUTS */
+.inputForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px;
+}
+
+.inputForm label {
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+}
+
+input[type="text"] {
+  height: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* FORM TITLE */
+.formTitle {
+  display: flex;
+  justify-content: center;
+}
+
+
+/* btn */
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+}

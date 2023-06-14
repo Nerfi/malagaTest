@@ -1,0 +1,9 @@
+.postContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 8rem;
+}
+
+.postWrapper {
+  height: 100dvh;
+}
