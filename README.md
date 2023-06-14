@@ -31,7 +31,32 @@ npm install
 npm start
 ```
 
+# Fathom3 Test BackEnd
+- Paso 1: Asegúrate de tener Node.js instalado en tu sistema. Puedes verificar la versión instalada ejecutando el siguiente comando en tu terminal:
+ ```bash
+node -v
 
+```
+
+- Paso 2: Abre una terminal y navega hasta el directorio raíz de tu proyecto donde se encuentra el backend. Por ejemplo:
+```bash
+cd path/to/your/project/backend
+
+```
+
+- Paso 3:  Instala las dependencias del backend ejecutando el siguiente comando:
+```bash
+
+npm install
+```
+
+- Paso 4: Inicia el servidor del backend ejecutando el siguiente comando:
+
+```bash
+
+npm start
+```
+- Esto ejecutará el script definido en el archivo package.json para iniciar el servidor. El comando puede variar dependiendo de cómo se haya configurado el proyecto.
 
 ## Contributing
 
