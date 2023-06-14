@@ -2,15 +2,18 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { useAuth } from "../../AuthContext/AuthContext";
 import "./styles.css";
+import Spinner from "../UI/Spinner";
 
 interface SinglePost {
   id: Number;
   title: string;
   userId: Number;
+  description: string;
 }
 
 const SinglePost = () => {
   const [singlePost, setSinglePost] = useState<SinglePost>();
+  const [loading, setLoading ] =useState(true);
   const { token } = useAuth();
   const { id } = useParams();
   // /post/2
@@ -27,13 +30,20 @@ const SinglePost = () => {
         const postsResponseData: SinglePost = await response.json();
 
         setSinglePost(postsResponseData);
+        setLoading(false); 
       };
 
       fetchSinglePost();
     } catch (error: any) {
+      setLoading(false); 
       throw new Error(error.message);
     }
   }, [id]);
+
+
+  if (loading) {
+    return <Spinner/>
+  }
 
   return (
     <div className="postWrapper">
@@ -44,12 +54,7 @@ const SinglePost = () => {
             <div className="container">
               <h4>{singlePost.title}</h4>
 
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Exercitationem nulla autem veritatis mollitia vitae cum. Ullam,
-                rem ab? Enim adipisci, debitis magni sequi nostrum repellat
-                molestiae quisquam mollitia voluptates dolor.{" "}
-              </p>
+              <p>{singlePost.description}</p>
             </div>
           </div>
         )}

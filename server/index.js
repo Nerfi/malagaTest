@@ -28,7 +28,7 @@ fastify.decorate("authenticate", async function (request, reply) {
 //LOGIN
 fastify.post("/login", async (request, res) => {
   const { name, password } = request.body;
-  console.log(name, password, "credentials");
+  //console.log(name, password, "credentials");
   // Find the user by username
   const user = await prisma.user.findUnique({
     where: {
@@ -104,12 +104,6 @@ fastify.get(
     return res.send(data);
   }
 );
-//test route delete after
-
-fastify.get("/users", async (req, res) => {
-  const users = await prisma.user.findMany();
-  res.send(users);
-});
 
 //
 
@@ -120,7 +114,6 @@ fastify.get(
     const postId = req.params.id;
 
     try {
-      console.log(postId, "user IDD");
       const posts = await prisma.post.findUnique({
         where: {
           id: Number(postId),
@@ -196,6 +189,7 @@ fastify.delete("/posts/:postId", async (request, reply) => {
 fastify.put("/post/:id/update", async (request, reply) => {
   const { id } = request.params;
   // esto deberia ir en un middleware, lo se!!
+
   let token;
   if (
     request.headers.authorization &&
@@ -216,7 +210,7 @@ fastify.put("/post/:id/update", async (request, reply) => {
   try {
     const post = await prisma.post.findUnique({
       where: {
-        id: parseInt(id),
+        id: Number(id),
       },
     });
 

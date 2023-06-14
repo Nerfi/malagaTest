@@ -2,8 +2,9 @@ import { useState } from "react";
 import "./styles.css";
 import { useAuth } from "../../AuthContext/AuthContext";
 import { useNavigate } from "react-router-dom";
+import toastNotification from "../UI/Toas";
 
-interface CreateForm {
+export interface CreateForm {
   title: string;
   description: string;
 }
@@ -39,12 +40,15 @@ const CreatePost = () => {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          title: postData.title,
-          description: postData.description,
+          title: postData.title.trim(),
+          description: postData.description.trim(),
         }),
       });
       if (response.ok) {
-        navigate("/");
+        toastNotification("success", "Post creado exitosamente");
+        setTimeout(() => {
+          navigate("/");
+        }, 1800);
       }
     } catch (error: any) {
       throw new Error(error.message);

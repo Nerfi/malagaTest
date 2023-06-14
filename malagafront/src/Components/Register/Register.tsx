@@ -16,8 +16,6 @@ const Register = () => {
     name: " ",
   });
 
-  console.log(register, "register");
-
   //navigation
   const navigate = useNavigate();
 
@@ -41,12 +39,11 @@ const Register = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: register.name,
-          email: register.email,
-          password: register.password,
+          name: register.name.trim(),
+          email: register.email.trim(),
+          password: register.password.trim(),
         }),
       });
-
 
       if (registerUser.ok) {
         navigate("/");

@@ -7,10 +7,12 @@ import "./styles.css";
 import PostsCards from "../UI/Cards";
 import { useNavigate } from "react-router-dom";
 import toastNotification from "../UI/Toas";
+import Spinner from "../UI/Spinner";
 
 interface Post {
   title: string;
   id: number;
+  description: string;
 }
 
 const IMG_URL_FAKE =
@@ -19,6 +21,7 @@ const IMG_URL_FAKE =
 const Posts = () => {
   const [posts, setPosts] = useState<Post[]>();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   const { token } = useAuth();
   const apiUrl = process.env.REACT_APP_API_URL! + "/posts";
@@ -30,13 +33,19 @@ const Posts = () => {
         const response = await fetch(apiUrl, { headers });
         const postsResponseData = await response.json();
         setPosts(postsResponseData);
+        setLoading(false); 
       };
 
       fetchAllPosts();
     } catch (error: any) {
+      setLoading(false); 
       throw new Error(error.message);
     }
   }, []);
+
+  if (loading) {
+    return <Spinner/>
+  }
 
   const handleDelete = async (id: number) => {
     const headers = {
@@ -71,37 +80,42 @@ const Posts = () => {
     }
   };
 
+  console.log(posts, "POSTS");
+
   return (
     <div className="postsWrapper">
       <div className="postsContainer">
-        {posts?.map((post: { title: string; id: number }) => {
-          return (
-            <div className="card" key={post.id}>
-              <img src={IMG_URL_FAKE} alt="Avatar" />
-              <div className="container">
-                <Link to={`/post/${post.id}`}>
-                  <h4>{post.title}</h4>
-                </Link>
-                <div className="postBtns">
-                  <button
-                    className="postDeleteBtn"
-                    onClick={() => handleDelete(post.id)}
-                  >
-                    Delete Post
-                  </button>
-                  <button
-                    className="postsUpdateBtn"
-                    onClick={() =>
-                      navigate(`/update/${post.id}`, { state: post.id })
-                    }
-                  >
-                    Update Post
-                  </button>
+        {posts?.map(
+          (post: { title: string; id: number; description: string }) => {
+            return (
+              <div className="card" key={post.id}>
+                <img src={IMG_URL_FAKE} alt="Avatar" />
+                <div className="container">
+                  <Link to={`/post/${post.id}`}>
+                    <h4>{post.title}</h4>
+                  </Link>
+                  <p>{post.description}</p>
+                  <div className="postBtns">
+                    <button
+                      className="postDeleteBtn"
+                      onClick={() => handleDelete(post.id)}
+                    >
+                      Delete Post
+                    </button>
+                    <button
+                      className="postsUpdateBtn"
+                      onClick={() =>
+                        navigate(`/update/${post.id}`, { state: post.id })
+                      }
+                    >
+                      Update Post
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          }
+        )}
       </div>
     </div>
   );
