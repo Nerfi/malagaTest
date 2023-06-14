@@ -6,6 +6,22 @@
 ## Installation
 Sigue estos pasos para configurar y ejecutar el proyecto de React en tu entorno local
 
+## OverView
+- En la parte del FrontEnd, MalagaFront, he hecho lo siguiente:
+-  Dentro de la carpeta del frontend he create otras subcarpetas como: Authcontext: donde nos ocupamos de todo lo que tiene 
+  que ver con el login del usuario, sobre todo la logica de login and logout.
+  - En la carpeta de components es donde alojamos todos los componentes de la app, esta carpeta esta dividida de la siguiente manera: -  CreatePost: aqui es donde esta todo lo relacionado con la creacion de un post, los estilos y el componente en si.
+  - Home, es la home page, la pagina principal
+  - Login nos ocupamos de todo lo que tiene 
+  que ver con el login del usuario, sobre todo la logica de login and logout.
+- Navbar, el componente de navegacion, con sus estilos
+- NotFound , carpeta donde tenemos un componente en caso de que la ruta deseada no exista
+- Posts , Carpeta donde tenemos todo lo relacionado con los ** posts** todos los posts de la app se renderizan aqui
+- Register, Carpeta donde esta toda la logica y estilos para crear un usuario
+- SinglePost, todo lo relacionado con la visializacion de un solo post con sus respectivos estilos
+- UI , componentes genericos de la app, que son llamados en mas de un sitio, ejemplo: spinner
+- UpdatePost, Carpeta donde tenemos todo lo relacionado con la actualizacion de un post y sus estilos
+- Routes, donde tenemos todas nuestras rutas y revisamos si tenemos autorizacion para verlas o no
 
 
 ## Usage
