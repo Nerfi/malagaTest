@@ -7,6 +7,14 @@
 Sigue estos pasos para configurar y ejecutar el proyecto de React en tu entorno local
 
 ## Installation Database
+⚠️ **La base de datos que usamos es SQLITE**
+  ``` bash
+  npm install prisma 
+```
+
+``` bash
+ npx prisma init --datasource-provider sqlite
+```
 - Asegúrate de tener una conexión de base de datos configurada en tu archivo schema.prisma. Verifica que la configuración de conexión sea correcta, incluyendo el adaptador de base de datos y otros detalles de autenticación si es necesario.
 - Genera los modelos y el cliente de Prisma:
  ``` bash
